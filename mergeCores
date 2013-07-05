@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# merges two Solr cores
+if [ "$2" = "" ]; then
+  echo -n "Name of first core: "
+  read name1
+  echo -n "Name of second core: "
+  read name2
+else
+  name1=$1
+  name2=$2
+fi
+
+if [ ! -d /var/lib/solr/data/$name ] || [ $name2 = "" ]; then
+  echo "Core doesn't exist"
+  exit
+fi
+
+curl "http://localhost:8080/solr/$name1/update" --data-binary '' -H 'Content-type:text/xml; charset=utf-8'
+curl "http://localhost:8080/solr/$name2/update" --data-binary '' -H 'Content-type:text/xml; charset=utf-8'
+curl "http://localhost:8080/solr/admin/cores?action=mergeindexes&core=$name1&indexDir=/var/lib/solr/data/$name2/index"
+curl "http://localhost:8080/solr/$name1/update" --data-binary '' -H 'Content-type:text/xml; charset=utf-8'
+curl "http://localhost:8080/solr/$name2/update" --data-binary '' -H 'Content-type:text/xml; charset=utf-8'
