@@ -3,7 +3,7 @@ solrCoreManager
 
 Some scripts to manage Solr multicore support for Solr 1.4 on Ubuntu servers. 
 
-Original scripts written by Dustin Rue (http://blog.dustinrue.com/archives/690). If you're interested in SOlr Multicore on Solr 3.4, check out http://blog.dustinrue.com/archives/927
+Original scripts written by Dustin Rue (http://blog.dustinrue.com/archives/690). If you're interested in Solr Multicore on Solr 3.4, check out http://blog.dustinrue.com/archives/927
 
 Moved here as I use them a lot and keep losing my bookmarks. The following instructions are mostly taken from this blog post as well.
 
